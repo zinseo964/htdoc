@@ -51,17 +51,25 @@
                     arr[i].style.color = 'blue';
                 }
             }
+            
+            function dayNight(mode){
+                if(mode === 'night'){
+                    night();
+                } else{
+                    day();
+                }
+            }
         
         </script>
         <input type="button" value="night" 
             onclick="
                 if(this.value === 'night'){
-                   night();
-                   // 이 버튼의 value값을 day로 변경한다. 
+                   //night();
+                   dayNight('night');
                     this.value = 'day';
                 } else {
-                    day();
-                    // 이 버튼의 value값을 night로 변경한다. 
+                    //day();
+                    dayNight('day');
                     this.value = 'night';
                 }
             "
