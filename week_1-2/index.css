@@ -1,0 +1,26 @@
+body {
+    margin:0;
+    height:1000;
+    background-color: white;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.nav {
+    background-color: ivory;
+    display : flex;
+    flex-wrap: wrap;
+    font-size: 0;
+    justify-content: space-evenly;
+}
+
+.nav-btn {
+    padding : 20px 50px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color ease-in 1s, color ease-in 1s;
+}
+
+.nav-btn:hover {
+    background-color: #78938A;
+    color : white;
+}

@@ -1,0 +1,36 @@
+<html>
+<body>
+    Javascript is <span id = "dot" 
+    style="
+        background-color: bisque;
+        padding : 0 10px;
+        cursor : pointer;
+    " 
+    onclick="
+        //document.getElementById('hidden').style.display = 'inline';
+        document.querySelector('#hidden').style.display = 'inline';
+        //document.getElementById('dot').style.display='none';
+        this.style.display='none';
+    
+    ">...</span> 
+    
+    <span id = "hidden" style = "display:none">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo fuga nobis dolorum autem iusto? Voluptatibus rerum distinctio magnam cumque illum qui harum sequi beatae corrupti, nemo incidunt maxime doloribus! Sed!</span>
+
+    <hr>
+
+    Javascript is <span id = "dot" 
+    style="
+        background-color: bisque;
+        padding : 0 10px;
+        cursor : pointer;
+    " 
+    onclick="
+        this.style.display='none';
+        document.querySelector('#content').innerHTML = `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo fuga nobis dolorum autem iusto? Voluptatibus rerum distinctio magnam cumque illum qui harum sequi beatae corrupti, nemo incidunt maxime doloribus! Sed!`
+    ">...</span> 
+    
+    <span id = "content"></span>
+
+    
+</body>
+</html>

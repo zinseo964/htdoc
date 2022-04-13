@@ -1,0 +1,11 @@
+.animation{
+    width: 100px;
+    height: 100px;
+    animation-name: changeColor;
+    animation-duration: 4s;
+}
+
+@keyframes changeColor{
+    from {background-color: blue;}
+    to{background-color: red;}
+}
