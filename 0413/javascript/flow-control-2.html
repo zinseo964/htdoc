@@ -7,7 +7,7 @@
         </script>
         <h1>Loop</h1>
         <script>
-            debugger;
+            //debugger;
             console.log(1);
             for(let i=0; i<3; i=i+1){
                 console.log(2);
@@ -15,5 +15,21 @@
             }
             console.log(4);
         </script>
+        <hr>
+
+        <h1>Loop+Array</h1>
+        <ul id = "list"></ul>
+        <ul>
+            <script>
+                let arr = ['a','b','c'];
+                let tag = '';
+                for(let i = 0;i<arr.length;i++){
+                    document.write('<li>'+arr[i]+'</li>');
+                    tag = tag + `<li> ${arr[i]} </li>`;
+                }
+                document.querySelector('#list').innerHTML = tag;
+            </script>
+        </ul>
+
     </body>
 </html>
