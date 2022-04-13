@@ -34,44 +34,39 @@
         </script>
         <input type="button" onclick="console.log(this);" value="1">
         <input type="button" onclick="console.log(this);" value="2">
+        <script>
+            function night(){
+                document.querySelector('body').style.backgroundColor = 'black';
+                document.querySelector('body').style.color = 'white';
+                let arr = document.querySelectorAll('a');
+                for(let i = 0;i<arr.length;i++){
+                    arr[i].style.color = 'gray';
+                }
+            }
+            function day(){
+                document.querySelector('body').style.backgroundColor = 'white';
+                document.querySelector('body').style.color = 'black';
+                let arr = document.querySelectorAll('a');
+                for(let i = 0;i<arr.length;i++){
+                    arr[i].style.color = 'blue';
+                }
+            }
+        
+        </script>
         <input type="button" value="night" 
             onclick="
-                // 만약에 이 버튼의 value 값이 night라면 아래 코드가 실행되고, 
                 if(this.value === 'night'){
-                    document.querySelector('body').style.backgroundColor = 'black';
-                    document.querySelector('body').style.color = 'white';
-                    let arr = document.querySelectorAll('a');
-                    for(let i = 0;i<arr.length;i++){
-                        arr[i].style.color = 'gray';
-                    }
-                    // 이 버튼의 value값을 day로 변경한다. 
+                   night();
+                   // 이 버튼의 value값을 day로 변경한다. 
                     this.value = 'day';
                 } else {
-                    // 아니라면 아래 코드가 실행된다. 
-                    document.querySelector('body').style.backgroundColor = 'white';
-                    document.querySelector('body').style.color = 'black';
-                    let arr = document.querySelectorAll('a');
-                    for(let i = 0;i<arr.length;i++){
-                        arr[i].style.color = 'blue';
-                    }
+                    day();
                     // 이 버튼의 value값을 night로 변경한다. 
                     this.value = 'night';
                 }
             "
         >
-<!--         
-        <input type="button" value="night" 
-            onclick="
-                document.querySelector('body').style.backgroundColor = 'black';
-                document.querySelector('body').style.color = 'white';
-            "
-        >
-        <input type="button" value="day" 
-            onclick="
-                document.querySelector('body').style.backgroundColor = 'white';
-                document.querySelector('body').style.color = 'black';
-            "
-        > -->
+
         <h1><a href="index.html">WEB</a></h1>
 
         <div id="container">
