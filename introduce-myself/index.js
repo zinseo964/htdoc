@@ -9,9 +9,9 @@ var main = document.querySelector('.container');
 const CLICKED_CLASS = "clicked";
 
 first.addEventListener('click',function(){
-    this.classList.toggle(CLICKED_CLASS,innerHTML="Developer");
-
-    //info.innerHTML = "Developer";
+    this.classList.toggle(CLICKED_CLASS);
+    
+    info.innerHTML = "Developer";
 });
 
 second.addEventListener('click',function(){
