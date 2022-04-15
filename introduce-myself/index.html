@@ -16,10 +16,11 @@
         <h1>
             LEE JIN SEO
         </h1>
-        <div id = "main">
-            
-        </div>
-        <div class = "container">
+            <a href="#" data-text="Clear" onclick = "
+                document.querySelector('#info').innerHTML='';
+            ">Clear</a>
+
+        <div class = "container" style = "cursor: pointer;">
             <div class ="item" id = "first">
                 First<br>: Desired job
             </div>
@@ -36,10 +37,7 @@
                 Fifth<br>: More about me
             </div>
         </div>
-        
-        <div id="infor">
-
-        </div>
-        <script src="script.js"></script>
+        <div id="info"></div>
+        <script src="./index.js"></script>
     </body>
 </html>
