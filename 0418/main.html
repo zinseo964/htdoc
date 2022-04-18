@@ -17,13 +17,46 @@
     <nav>
         <ol></ol>
     </nav>
-    <h2>Welcome</h2>
-    Hello, WEB
+    <article>
+        <h2>Welcome</h2>
+        Hello, WEB
+        <p></p>
+    </article>
     <script>
-        function nav(){
+        // function nav(){
+        //     let navTag = '';
+        //     for(let i = 0; i<topics.length; i = i+1){
+        //         navTag = navTag + `<li><a href="/read/${topics[i].id}">${topics[i].title}</a></li>`;
+        //     }
+        //     document.querySelector('nav ol').innerHTML = navTag;
+        // }
+        // let nav = function(){ 
+        //     let navTag = '';
+        //     for(let i = 0; i<topics.length; i = i+1){
+        //         navTag = navTag + `<li><a href="/read/${topics[i].id}">${topics[i].title}</a></li>`;
+        //     }
+        //     document.querySelector('nav ol').innerHTML = navTag;
+        // }
+
+        let nav = () => { //arrow funtion 
             let navTag = '';
             for(let i = 0; i<topics.length; i = i+1){
-                navTag = navTag + `<li><a href="/read/${topics[i].id}">${topics[i].title}</a></li>`;
+                navTag = navTag + `
+                <li>
+                    <a href="/read/${topics[i].id}" id="${topics[i].id}" onclick="
+                        event.preventDefault();
+                        console.log(event.target.id);
+                        for (let i=0; i<topics.length;i++){
+                            if(topics[i].id === Number(event.target.id)){
+                                // document.querySelector('p').innerHTML = topics[i].body;
+                                document.querySelector('article').innerHTML = '<h2>${topics[i].title}</h2>${topics[i].body}';
+                                break;
+                            }
+                        }
+                    ">
+                        ${topics[i].title}
+                    </a>
+                </li>`;
             }
             document.querySelector('nav ol').innerHTML = navTag;
         }
