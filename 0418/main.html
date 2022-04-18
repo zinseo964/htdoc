@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        [
+            [1,'html','html is ..'],
+            [2,'css','css is ..']
+        ]
+        let topics = [
+            {id : 1,title: 'html',body:'html is ..'}, 
+            {id : 2,title: 'css',body:'css is ..'}
+        ]
+    </script>
+</head>
+<body>
+    <h1><a href="index.html">WEB</a></h1>
+    <nav>
+        <ol></ol>
+    </nav>
+    <h2>Welcome</h2>
+    Hello, WEB
+    <script>
+        function nav(){
+            let navTag = '';
+            for(let i = 0; i<topics.length; i = i+1){
+                navTag = navTag + `<li><a href="/read/${topics[i].id}">${topics[i].title}</a></li>`;
+            }
+            document.querySelector('nav ol').innerHTML = navTag;
+        }
+        nav();
+    </script>
+
+</body>
+</html>
