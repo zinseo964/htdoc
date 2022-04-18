@@ -4,88 +4,32 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <title>WEB - Welcome</title>
         <meta charset="utf-8">
-        <style>
-            h1{
-                border-bottom:10px solid green;
-                padding:30px;
-                margin-bottom:0;
-            }
-            h1 a{
-                text-decoration: none;
-            }
-            ol{
-                
-                margin-top:0;
-            }
-            @media all and (min-width: 480px) {
-                #container{
-                    display:grid;
-                    grid-template-columns: 150px 1fr;
-                }
-                ol{
-                    border-right:10px solid pink;
+        <link = rel="stylesheet" href="style.css">
+        <script type = "module">
+            import {dayNight} from './daynight.js';
+            function listener(evt){
+                if(evt.target.value==='night'){
+                    dayNight('night');
+                    evt.target.value='day';
+                }else{
+                    dayNight('day');
+                    evt.target.value='night';
                 }
             }
-            
-        </style>
+            document.querySelector('#dayNightBtn').addEventListener('click',listener);
+        </script>
     </head>
     <body>
         <script>
             console.log(this);
         </script>
-        <input type="button" onclick="console.log(this);" value="1">
-        <input type="button" onclick="console.log(this);" value="2">
-        <script>
-            function night(){
-                // document.querySelector('body').style.backgroundColor = 'black';
-                // document.querySelector('body').style.color = 'white';
-                $('body').css('background-color','black').css('color','white');
-                
-                // let arr = document.querySelectorAll('a');
-                // for(let i = 0;i<arr.length;i++){
-                //     arr[i].style.color = 'gray';
-                // }
-                $('a').css('color','gray'); 
-            }
-            function day(){
-                document.querySelector('body').style.backgroundColor = 'white';
-                document.querySelector('body').style.color = 'black';
-                let arr = document.querySelectorAll('a');
-                for(let i = 0;i<arr.length;i++){
-                    arr[i].style.color = 'blue';
-                }
-            }
-            
-            function dayNight(mode){
-                if(mode === 'night'){
-                    night();
-                } else{
-                    day();
-                }
-            }
-        
-        </script>
-        <input type="button" value="night" 
-            onclick="
-                if(this.value === 'night'){
-                   //night();
-                   dayNight('night');
-                    this.value = 'day';
-                } else {
-                    //day();
-                    dayNight('day');
-                    this.value = 'night';
-                }
-            "
-        >
-
-        <h1><a href="index.html">WEB</a></h1>
-
+        <input type="button" id = 'dayNightBtn' value="night">
+        <h1>WEB</h1>
         <div id="container">
             <ol>
-                <li><a href="1.html">html</a></li>
-                <li><a href="2.html">css</a></li>
-                <li><a href="3.html">javascript</a></li>
+                <li><a>html</a></li>
+                <li><a>css</a></li>
+                <li><a>javascript</a></li>
             </ol>
             <div>
                 <h2>Welcome</h2>
