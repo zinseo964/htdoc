@@ -1,0 +1,57 @@
+<html>
+<head></head>
+    <body>
+        <header>
+            <h1><a href="/">WEB</a></h1>
+        </header>
+        <nav>
+            <ol>
+                <!-- <li><a href="/read/1">html</a></li>
+                <li><a href="/read/2">css</a></li> -->
+            </ol>
+        </nav>
+        <article>
+            <!-- <h2>Welcome</h2>
+            Hello,web -->
+        </article>
+        <ol id="control">
+            <!-- <li><a href="/create">Create</a></li>
+            <li><a href="/update">Update</a></li>
+            <li><a href="/delete">Delete</a></li> -->
+        </ol>
+        <script>
+            const topics = [
+                {id:1, title:'html', body:'html is ...'},
+                {id:2, title:'css', body:'css is ... '}
+            ];
+            let selectedId = null;
+            function navHandler(e){
+                //1. link no work
+                e.preventDefault();
+                //2. get id value
+                selectedId = Number(e.target.id); //전역변수로 바꿔줌
+                read();
+            }
+            function nav(){
+                const tag = topics.map((e)=>`
+                    <li>   
+                        <a href="/read/${e.id}" id="${e.id}" onclick="navHandler(event)">${e.title}</a>
+                    </li>`).join('');
+                document.querySelector('nav>ol').innerHTML = tag;
+            }
+            function welcome(){}
+            function read(){ //navHandler가 할 일중 3,4번은 다른 곳에서도 쓰일 수 있을 것이라는 생각이 들어 여길로 위임
+                //3. find same id value in topics 
+                const topic = topics.filter(e => e.id === selectedId)[0];
+                //4. make and show text
+                const content = `<h2>${topic.title}</h2>${topic.body}`;
+                document.querySelector('article').innerHTML = content;
+            }
+            function create(){}
+            function update(){}
+            function del(){}
+            function control(){}
+            nav();
+        </script>
+    </body>
+</html>

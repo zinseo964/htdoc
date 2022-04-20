@@ -1,0 +1,120 @@
+<html>
+    <body>
+        <header>
+            <h1><a href="/" onclick="
+                event.preventDefault();
+                selectedId = null;
+                welcome();
+                control();     
+            ">WEB</a></h1>
+        </header>
+        <nav>
+            <ol>
+                <!-- <li><a href="/read/1">html</a></li>
+                <li><a href="/read/2">css</a></li> -->
+            </ol>
+        </nav>
+        <article>
+            <!-- <h2>Welcome</h2>
+            Hello,WEB.             -->
+        </article>
+        <ul id="control">
+            <!-- <li><a href="/create" onclick="event.preventDefault();create();">create</a></li>
+            <li><a href="/update" onclick="event.preventDefault();update();">update</a></li>
+            <li><a href="/delete" onclick="event.preventDefault();del();">delete</a></li> -->
+        </ul>
+
+        <script>
+            let topics = [
+                {id:1, title:'html', body:'html is ...'},
+                {id:2, title:'css', body:'css is ...'}
+            ];
+            let selectedId = null;
+            let nextId = 3;
+            function header(){}
+            function nav(){
+                const tag = topics.map(e=>`<li>
+                    <a href="/read/${e.id}" id="${e.id}" onclick="
+                        event.preventDefault();
+                        selectedId = Number(this.id);    
+                        read();     
+                        control();               
+                    ">${e.title}</a>
+                </li>`).join('');
+                document.querySelector('nav>ol').innerHTML = tag;
+            }
+            function welcome(){
+                document.querySelector('article').innerHTML = `<h2>Welcome</h2>Hello, WEB`;
+            }
+            function read(){
+                const topic = topics.filter(e=>e.id === selectedId)[0];
+                document.querySelector('article').innerHTML = `<h2>${topic.title}</h2>${topic.body}`;
+            }
+            function createHandler(evt){
+                evt.preventDefault();
+                const t = evt.target.title.value;
+                const b = evt.target.body.value;
+                topics.push({id:nextId, title:t, body:b});
+                nav();
+                selectedId = nextId;
+                read();
+                nextId++;
+                control(); 
+            }
+            function create(){
+                document.querySelector('article').innerHTML = `
+                    <h2>Create</h2>
+                    <form onsubmit="createHandler(event)">
+                        <p><input type="text" name="title" placeholder="제목"></p>
+                        <p><textarea name="body" placeholder="본문"></textarea></p>
+                        <p><input type="submit" value="create"></p>
+                    </form>
+                `;
+            }
+            function updateHandler(evt){
+                evt.preventDefault();
+                const t = evt.target.title.value;
+                const b = evt.target.body.value;
+                const topic = topics.filter(e=>e.id === selectedId)[0];
+                topic.title = t;
+                topic.body = b;                
+                nav();
+                read();
+                control();
+            }
+            function update(){
+                const topic = topics.filter(e=>e.id === selectedId)[0];
+                document.querySelector('article').innerHTML = `
+                    <h2>Update</h2>
+                    <form onsubmit="updateHandler(event)">
+                        <p><input type="text" name="title" placeholder="제목" value="${topic.title}"></p>
+                        <p><textarea name="body" placeholder="본문">${topic.body}</textarea></p>
+                        <p><input type="submit" value="create"></p>
+                    </form>
+                `;
+            }
+            function del(){
+                topics = topics.filter(e=>e.id != selectedId);
+                nav();
+                welcome();
+                control();
+            }
+            function control(){
+                let contextUI = '';
+                if(selectedId !== null){
+                    contextUI = `
+                        <li><a href="/update" onclick="event.preventDefault();update();">update</a></li>
+                        <li><a href="/delete" onclick="event.preventDefault();del();">delete</a></li>
+                    `;
+                }
+                document.querySelector('#control').innerHTML = `
+                    <li><a href="/create" onclick="event.preventDefault();create();">create</a></li>
+                    ${contextUI}
+                `;
+            }
+            nav();
+            welcome();
+            control();
+        </script>
+    </body>
+</html>
