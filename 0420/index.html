@@ -4,7 +4,7 @@
         <header>
             <h1><a href="/" onclick="
                 event.preventDefault();
-                welcome()
+                welcome();
                 ">WEB</a></h1>
         </header>
         <nav>
@@ -44,6 +44,8 @@
             }
             function welcome(){
                 document.querySelector('article').innerHTML = `<h2>Welcome</h2>Hello, WEB`;
+                selectedId=null;
+                control();
             }
             function read(){ //navHandler가 할 일중 3,4번은 다른 곳에서도 쓰일 수 있을 것이라는 생각이 들어 여길로 위임
                 //3. find same id value in topics 
@@ -51,13 +53,26 @@
                 //4. make and show text
                 const content = `<h2>${topic.title}</h2>${topic.body}`;
                 document.querySelector('article').innerHTML = content;
+                control();
             }
             function create(){}
             function update(){}
             function del(){}
-            function control(){}
+            function control(){
+                let contextUI = '';
+                if(selectedId!==null){
+                    contextUI = `
+                    <li><a href="/update">Update</a></li>
+                    <li><a href="/delete">Delete</a></li>`;
+                }
+                document.querySelector('#control').innerHTML = `
+                    <li><a href="/create">Create</a></li>
+                    ${contextUI}
+                `;
+            }
             nav();
             welcome();
+            control();
         </script>
     </body>
 </html>
