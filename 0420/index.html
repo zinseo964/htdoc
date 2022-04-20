@@ -27,6 +27,7 @@
                 {id:1, title:'html', body:'html is ...'},
                 {id:2, title:'css', body:'css is ... '}
             ];
+            let nextId = 3;
             let selectedId = null;
             function navHandler(e){
                 //1. link no work
@@ -55,7 +56,28 @@
                 document.querySelector('article').innerHTML = content;
                 control();
             }
-            function create(){}
+            function createHandler(e){
+                e.preventDefault();
+                const t = e.target.title.value;
+                const b = e.target.body.value;
+                //위의 값들을 topics에 push
+                const newTopic = {id: nextId, title:t, body:b};
+                topics.push(newTopic);
+                nav();
+                selectedId = nextId;
+                nextId = nextId + 1;
+                read();
+            }
+            function create(){
+                const content = `
+                    <form onsubmit="createHandler(event);">
+                        <p><textarea rows="1" name="title" placeholder = "Title"></textarea></p>
+                        <p><textarea name="body" placeholder="Text"></textarea></p>
+                        <input type="submit" value="create">
+                    </form>
+                `;
+                document.querySelector('article').innerHTML = content;
+            }
             function update(){}
             function del(){}
             function control(){
@@ -66,7 +88,7 @@
                     <li><a href="/delete">Delete</a></li>`;
                 }
                 document.querySelector('#control').innerHTML = `
-                    <li><a href="/create">Create</a></li>
+                    <li><a href="/create" onclick="event.preventDefault(); create();">Create</a></li>
                     ${contextUI}
                 `;
             }
